@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora Escapes â 48H Miami Escape Flow</title>
+<meta name="description" content="The exact 48-hour Miami luxury escape plan. No planning, just follow the flow.">
+<meta property="og:title" content="48H Escape Flow: Miami â Luxury Nightlife + Day Experience Itinerary">
+<meta property="og:description" content="No planning. Just follow the exact experience flow.">
+<meta property="og:image" content="hero.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blush:#d4a5a5;
+  --blush-soft:#ead7d2;
+  --gold:#b08968;
+  --gold-light:#cdb392;
+  --cream:#f7f3ee;
+  --ivory:#fbf8f3;
+  --charcoal:#2a2a2a;
+  --ink:#1a1a1a;
+  --line:rgba(176,137,104,0.25);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-weight:300;
+  color:var(--ink);
+  background:var(--ivory);
+  line-height:1.65;
+  font-size:16px;
+}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:-0.01em;line-height:1.15}
+.tracking{letter-spacing:0.4em;text-transform:uppercase;font-size:11px;font-weight:500;color:var(--gold)}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gold);text-decoration:none}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:2rem 1.5rem 3rem;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:url('hero.jpg') center/cover no-repeat;
+  z-index:-2;
+}
+.hero::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,26,26,0.55) 0%,rgba(26,26,26,0.35) 40%,rgba(26,26,26,0.75) 100%);
+  z-index:-1;
+}
+.brand{
+  color:#fff;
+  letter-spacing:0.5em;
+  font-size:11px;
+  font-weight:500;
+  text-transform:uppercase;
+  margin-bottom:2rem;
+  opacity:0.9;
+}
+.brand::before,.brand::after{
+  content:'';
+  display:inline-block;
+  width:30px;
+  height:1px;
+  background:#fff;
+  vertical-align:middle;
+  margin:0 14px;
+  opacity:0.6;
+}
+.hero h1{
+  color:#fff;
+  font-size:clamp(2.4rem,7vw,4.6rem);
+  margin-bottom:1.2rem;
+  max-width:880px;
+  font-weight:500;
+}
+.hero h1 .sparkle{font-size:0.7em;color:var(--gold-light);vertical-align:0.15em}
+.hero p.sub{
+  color:#fff;
+  opacity:0.92;
+  font-size:clamp(1rem,2.2vw,1.25rem);
+  margin-bottom:2.6rem;
+  max-width:540px;
+  font-weight:300;
+  font-style:italic;
+}
+.cta-form{
+  display:flex;
+  flex-direction:column;
+  gap:0.7rem;
+  width:100%;
+  max-width:420px;
+  align-items:stretch;
+}
+.cta-form input[type=email]{
+  width:100%;
+  padding:1.1rem 1.3rem;
+  border:1px solid rgba(255,255,255,0.4);
+  background:rgba(255,255,255,0.95);
+  color:var(--ink);
+  font-size:15px;
+  font-family:inherit;
+  font-weight:400;
+  border-radius:2px;
+  outline:none;
+  transition:border-color 0.2s;
+}
+.cta-form input[type=email]:focus{border-color:var(--gold)}
+.cta-btn{
+  padding:1.1rem 1.5rem;
+  background:var(--ink);
+  color:#fff;
+  border:none;
+  font-family:inherit;
+  font-size:13px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:500;
+  cursor:pointer;
+  border-radius:2px;
+  transition:background 0.25s,transform 0.15s;
+}
+.cta-btn:hover:not(:disabled){background:var(--gold)}
+.cta-btn:active{transform:scale(0.98)}
+.cta-btn:disabled{opacity:0.6;cursor:not-allowed}
+.cta-fineprint{color:#fff;opacity:0.65;font-size:11px;margin-top:0.8rem;letter-spacing:0.04em}
+.error{color:#ffd3d3;font-size:13px;margin-top:0.6rem;min-height:1.2em}
+
+/* SECTIONS */
+section{padding:5.5rem 1.5rem}
+.container{max-width:880px;margin:0 auto}
+.section-eyebrow{margin-bottom:0.9rem}
+section h2{
+  font-size:clamp(2rem,4.5vw,2.9rem);
+  margin-bottom:2.2rem;
+  color:var(--ink);
+  max-width:680px;
+}
+
+/* WHAT YOU GET */
+.get{background:var(--cream)}
+.get ul{list-style:none;display:grid;gap:1.1rem;max-width:620px}
+.get li{
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+  font-size:1.05rem;
+  color:var(--charcoal);
+  padding-bottom:1.1rem;
+  border-bottom:1px solid var(--line);
+}
+.get li:last-child{border-bottom:none}
+.get li::before{
+  content:'';
+  flex-shrink:0;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--gold);
+  margin-top:0.65em;
+}
+
+/* HOW IT WORKS */
+.how{background:var(--ivory)}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;margin-top:2rem}
+.how-step{text-align:center}
+.how-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;
+  font-weight:400;
+  font-style:italic;
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:1rem;
+}
+.how-step h3{font-size:1.4rem;margin-bottom:0.6rem;color:var(--ink)}
+.how-step p{color:var(--charcoal);font-size:0.96rem;max-width:240px;margin:0 auto;opacity:0.85}
+
+/* EMOTIONAL PULL */
+.pull{
+  background:url('beach.jpg') center/cover no-repeat;
+  position:relative;
+  isolation:isolate;
+  text-align:center;
+}
+.pull::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(247,243,238,0.92),rgba(247,243,238,0.78));
+  z-index:-1;
+}
+.pull blockquote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,4vw,2.4rem);
+  line-height:1.35;
+  font-style:italic;
+  color:var(--ink);
+  max-width:680px;
+  margin:1.5rem auto;
+  font-weight:400;
+}
+.pull blockquote span{color:var(--gold);display:block;margin-top:0.6rem;font-style:normal;font-size:0.65em;letter-spacing:0.3em;text-transform:uppercase}
+
+/* REPEAT CTA */
+.repeat{background:var(--ink);color:#fff;text-align:center}
+.repeat h2{color:#fff;margin:0 auto 1rem;text-align:center}
+.repeat p.sub{color:#fff;opacity:0.8;max-width:480px;margin:0 auto 2.4rem;font-style:italic}
+.repeat .tracking{color:var(--gold-light)}
+.repeat form{margin:0 auto;max-width:420px;display:flex;flex-direction:column;gap:0.7rem}
+.repeat .cta-btn{background:var(--gold);color:#fff}
+.repeat .cta-btn:hover:not(:disabled){background:var(--blush)}
+.repeat input[type=email]{background:#fff}
+.repeat .error{color:#ffd3d3}
+
+/* FUTURE */
+.future{background:var(--blush-soft);text-align:center}
+.future h2{margin:0 auto 1rem;color:var(--ink)}
+.future p.lead{font-size:1.1rem;max-width:560px;margin:0 auto 2.5rem;color:var(--charcoal)}
+.cities{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem 2rem;margin-top:2rem}
+.cities span{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;
+  font-style:italic;
+  color:var(--gold);
+}
+.cities span::after{content:'Â·';margin-left:2rem;color:var(--gold-light)}
+.cities span:last-child::after{display:none}
+
+/* FOOTER */
+footer{padding:2.5rem 1.5rem;text-align:center;background:var(--ink);color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:0.3em;text-transform:uppercase}
+footer a{color:var(--gold-light);margin-left:1rem}
+
+/* THANK YOU OVERLAY */
+.thanks-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(26,26,26,0.96);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  padding:2rem;
+  animation:fadein 0.4s ease;
+}
+.thanks-overlay.active{display:flex}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.thanks-card{
+  background:var(--ivory);
+  padding:3.5rem 2.5rem;
+  max-width:520px;
+  width:100%;
+  text-align:center;
+  border-radius:4px;
+  position:relative;
+  animation:slideup 0.5s ease;
+}
+@keyframes slideup{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.thanks-card .tracking{color:var(--gold)}
+.thanks-card h2{font-size:2.4rem;margin:1rem 0 1.2rem;color:var(--ink)}
+.thanks-card p{color:var(--charcoal);margin-bottom:2rem;font-size:1.05rem;line-height:1.6}
+.thanks-card .download-btn{
+  display:inline-block;
+  padding:1.1rem 2rem;
+  background:var(--ink);
+  color:#fff;
+  font-size:13px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:500;
+  border-radius:2px;
+  transition:background 0.25s;
+}
+.thanks-card .download-btn:hover{background:var(--gold)}
+.thanks-card .close{
+  position:absolute;
+  top:14px;right:18px;
+  background:none;
+  border:none;
+  font-size:24px;
+  color:var(--charcoal);
+  cursor:pointer;
+  opacity:0.5;
+}
+.thanks-card .close:hover{opacity:1}
+.thanks-card small{display:block;margin-top:1.5rem;color:var(--gold);font-size:11px;letter-spacing:0.2em;text-transform:uppercase}
+
+/* MOBILE */
+@media(max-width:640px){
+  section{padding:4rem 1.3rem}
+  .hero{padding:1.5rem 1.3rem 2.5rem}
+  .brand{margin-bottom:1.5rem;font-size:10px}
+  .hero h1{margin-bottom:0.9rem}
+  .hero p.sub{margin-bottom:2rem}
+  .how-grid{gap:2rem}
+  .thanks-card{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="brand">Velora Escapes</div>
+  <h1>Steal This 48-Hour Miami Luxury Escape Plan <span class="sparkle">â¨</span></h1>
+  <p class="sub">No planning. Just follow the exact experience flow.</p>
+  <form class="cta-form" data-source="hero" novalidate>
+    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+    <button class="cta-btn" type="submit">Send Me The Escape Flow</button>
+    <div class="error" role="alert" aria-live="polite"></div>
+    <div class="cta-fineprint">Free Â· Delivered instantly Â· Unsubscribe anytime</div>
+  </form>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="get">
+  <div class="container">
+    <div class="tracking section-eyebrow">What's inside</div>
+    <h2>Your full Miami escape â already planned.</h2>
+    <ul>
+      <li>A step-by-step 48-hour itinerary, hour by hour</li>
+      <li>The luxury nightlife sequence â no guesswork, no FOMO</li>
+      <li>Where to stay, and exactly how to move around the city</li>
+      <li>Brunch, beach, and curated experiences worth the flight</li>
+      <li>Designed for short, high-impact trips with zero planning stress</li>
+    </ul>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container" style="text-align:center">
+    <div class="tracking section-eyebrow">How it works</div>
+    <h2 style="margin-left:auto;margin-right:auto">Three steps. Then you're in Miami.</h2>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">i</div>
+        <h3>Download the PDF</h3>
+        <p>Land in your inbox in seconds. Save it to your phone.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">ii</div>
+        <h3>Follow the sequence</h3>
+        <p>Show up. Eat there. Drink that. Dance here. Trust the flow.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">iii</div>
+        <h3>Live the experience</h3>
+        <p>Forty-eight hours of Miami without one minute of planning stress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMOTIONAL PULL -->
+<section class="pull">
+  <div class="container">
+    <div class="tracking section-eyebrow">A different kind of trip</div>
+    <blockquote>
+      "No overthinking. No twelve open tabs. Just show up, follow the flow,
+      and feel like everything has already been figured out for you."
+      <span>â that's the whole idea</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- REPEAT CTA -->
+<section class="repeat">
+  <div class="container">
+    <div class="tracking section-eyebrow">Ready when you are</div>
+    <h2>Send me the Miami flow.</h2>
+    <p class="sub">It's free. It's curated. And it lands in your inbox in seconds.</p>
+    <form class="cta-form" data-source="repeat" novalidate>
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+      <button class="cta-btn" type="submit">Get My Miami Escape Flow</button>
+      <div class="error" role="alert" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- FUTURE VALUE -->
+<section class="future">
+  <div class="container">
+    <div class="tracking section-eyebrow">Coming soon</div>
+    <h2>More escape flows. More cities.</h2>
+    <p class="lead">We're curating the same 48-hour magic for the cities that already feel like a fantasy. Join the list above and you'll get every new flow the moment it drops.</p>
+    <div class="cities">
+      <span>Vegas</span>
+      <span>NYC</span>
+      <span>Tulum</span>
+      <span>Dubai</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Â© Velora Escapes</div>
+</footer>
+
+<!-- THANK YOU OVERLAY -->
+<div class="thanks-overlay" id="thanks" role="dialog" aria-modal="true" aria-labelledby="thanks-title">
+  <div class="thanks-card">
+    <button class="close" onclick="closeThanks()" aria-label="Close">Ã</button>
+    <div class="tracking">You're in</div>
+    <h2 id="thanks-title">The flow is on its way.</h2>
+    <p>Check your inbox in a moment â your <em>48H Miami Escape Flow</em> is landing now. Or grab it instantly below.</p>
+    <a class="download-btn" href="velora_48h_miami_escape.pdf" download>Download The PDF</a>
+    <small>Velora Escapes Â· More flows coming soon</small>
+  </div>
+</div>
+
+<script>
+const WEBHOOK_URL = "https://build.twin.so/triggers/369439de-88e0-4ab0-8cd5-ddba362390d5/webhook";
+const PDF_URL = "https://mulebakerjeffrey-svg.github.io/velora-miami-escape/velora_48h_miami_escape.pdf";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function showThanks(){
+  document.getElementById('thanks').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeThanks(){
+  document.getElementById('thanks').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+document.querySelectorAll('form.cta-form').forEach(form=>{
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const errEl=form.querySelector('.error');
+    const btn=form.querySelector('.cta-btn');
+    const emailInput=form.querySelector('input[name=email]');
+    const email=(emailInput.value||'').trim().toLowerCase();
+    errEl.textContent='';
+    if(!EMAIL_RE.test(email)){
+      errEl.textContent='Please enter a valid email address.';
+      emailInput.focus();
+      return;
+    }
+    const originalLabel=btn.textContent;
+    btn.disabled=true;
+    btn.textContent='Sending...';
+    try{
+      const res=await fetch(WEBHOOK_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          email:email,
+          source:form.dataset.source,
+          user_agent:navigator.userAgent,
+          submitted_at:new Date().toISOString(),
+          page:'landing'
+        })
+      });
+      // Always show thanks, even if backend is slow â the webhook is fire-and-forget
+      showThanks();
+      form.reset();
+    }catch(err){
+      // Even on network error, show thanks so user can grab the PDF directly
+      showThanks();
+      form.reset();
+    }finally{
+      btn.disabled=false;
+      btn.textContent=originalLabel;
+    }
+  });
+});
+
+// Close overlay on ESC
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape')closeThanks();
+});
+</script>
+</body>
+</html>
