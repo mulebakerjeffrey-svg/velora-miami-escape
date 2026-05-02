@@ -1,4 +1,11 @@
 {
-  "updated_at": "2026-05-02T05:14:27.796Z",
-  "signups": []
+  "updated_at": "2026-05-02T05:21:41.453Z",
+  "signups": [
+    {
+      "email": "test+build@velora.example",
+      "submitted_at": "2026-05-02T05:20:49Z",
+      "source": "hero",
+      "user_agent": "Mozilla/5.0 (build validation) Test/1.0"
+    }
+  ]
 }
