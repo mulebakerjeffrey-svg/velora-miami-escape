@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora Admin â Signups Dashboard</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#b08968;
+  --gold-light:#cdb392;
+  --cream:#f7f3ee;
+  --ivory:#fbf8f3;
+  --charcoal:#2a2a2a;
+  --ink:#1a1a1a;
+  --line:rgba(176,137,104,0.25);
+  --bg:#fbf8f3;
+  --surface:#fff;
+}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-weight:400;
+  color:var(--ink);
+  background:var(--bg);
+  font-size:14.5px;
+  line-height:1.5;
+}
+h1,h2,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:-0.01em}
+header{
+  padding:2rem 2rem 1.5rem;
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+}
+header .tracking{font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+header h1{font-size:2rem}
+header p{color:var(--charcoal);opacity:0.8;font-size:13px;margin-top:0.3rem}
+
+main{max-width:1200px;margin:0 auto;padding:2rem}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;margin-bottom:2rem}
+.metric{
+  background:var(--surface);
+  padding:1.4rem 1.5rem;
+  border-radius:4px;
+  border:1px solid var(--line);
+}
+.metric .label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.metric .value{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:500;line-height:1;color:var(--ink)}
+.metric .helper{font-size:12px;color:var(--charcoal);opacity:0.65;margin-top:0.5rem}
+
+.chart-card{
+  background:var(--surface);
+  padding:1.5rem;
+  border-radius:4px;
+  border:1px solid var(--line);
+  margin-bottom:2rem;
+}
+.chart-card h2{font-size:1.3rem;margin-bottom:0.3rem}
+.chart-card .sub{font-size:12px;color:var(--charcoal);opacity:0.65;margin-bottom:1rem}
+#chart{width:100%;height:240px;display:block}
+
+.controls{
+  background:var(--surface);
+  padding:1.2rem;
+  border-radius:4px;
+  border:1px solid var(--line);
+  margin-bottom:1.2rem;
+  display:flex;flex-wrap:wrap;gap:0.8rem;align-items:center;
+}
+.controls input,.controls select{
+  padding:0.65rem 0.9rem;
+  border:1px solid var(--line);
+  border-radius:2px;
+  font-family:inherit;
+  font-size:14px;
+  background:var(--ivory);
+}
+.controls input:focus,.controls select:focus{outline:none;border-color:var(--gold)}
+.controls .grow{flex:1;min-width:200px}
+.controls button{
+  padding:0.65rem 1.2rem;
+  background:var(--ink);
+  color:#fff;
+  border:none;
+  font-family:inherit;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:2px;
+  font-weight:500;
+}
+.controls button.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.controls button:hover{background:var(--gold)}
+.controls button.secondary:hover{background:var(--cream)}
+
+table{
+  width:100%;
+  background:var(--surface);
+  border-collapse:collapse;
+  border-radius:4px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+thead{background:var(--cream)}
+th{
+  text-align:left;
+  padding:0.9rem 1.1rem;
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:500;
+  border-bottom:1px solid var(--line);
+}
+td{padding:0.85rem 1.1rem;border-bottom:1px solid var(--line);font-size:14px;color:var(--charcoal)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--ivory)}
+.badge{display:inline-block;padding:0.2rem 0.6rem;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;font-weight:500}
+.badge.hero{background:#ead7d2;color:#7a4a3a}
+.badge.repeat{background:#e2d4c0;color:#6b4f33}
+.empty{padding:3rem 1.5rem;text-align:center;color:var(--charcoal);opacity:0.65;font-style:italic}
+
+.lock-screen{
+  position:fixed;inset:0;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  z-index:1000;padding:2rem;
+}
+.lock-card{
+  background:var(--ivory);
+  padding:3rem 2.5rem;
+  max-width:380px;
+  width:100%;
+  border-radius:4px;
+  text-align:center;
+}
+.lock-card h2{font-size:1.8rem;margin-bottom:0.5rem}
+.lock-card p{color:var(--charcoal);font-size:13px;margin-bottom:1.5rem}
+.lock-card input{
+  width:100%;
+  padding:0.85rem 1rem;
+  margin-bottom:0.8rem;
+  border:1px solid var(--line);
+  border-radius:2px;
+  font-family:inherit;
+  font-size:14px;
+}
+.lock-card button{
+  width:100%;
+  padding:0.85rem;
+  background:var(--ink);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  border-radius:2px;
+}
+.lock-card .err{color:#a13a3a;font-size:12px;min-height:1em;margin-bottom:0.6rem}
+
+footer{padding:2rem;text-align:center;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--charcoal);opacity:0.5}
+</style>
+</head>
+<body>
+
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-card">
+    <div style="font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem">Velora Admin</div>
+    <h2>Sign in</h2>
+    <p>Enter the admin passcode to view signups.</p>
+    <div class="err" id="lockErr"></div>
+    <input type="password" id="lockInput" placeholder="Passcode" autofocus>
+    <button onclick="tryUnlock()">Enter Dashboard</button>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+<header>
+  <div class="tracking">Velora Escapes</div>
+  <h1>Signups Dashboard</h1>
+  <p id="lastUpdated">Loadingâ¦</p>
+</header>
+
+<main>
+  <div class="metrics">
+    <div class="metric"><div class="label">Total signups</div><div class="value" id="mTotal">â</div><div class="helper">All-time</div></div>
+    <div class="metric"><div class="label">Last 7 days</div><div class="value" id="m7">â</div><div class="helper">New signups</div></div>
+    <div class="metric"><div class="label">Last 24 hours</div><div class="value" id="m24">â</div><div class="helper">New signups</div></div>
+    <div class="metric"><div class="label">From hero CTA</div><div class="value" id="mHero">â</div><div class="helper">vs repeat: <span id="mRepeat">â</span></div></div>
+  </div>
+
+  <div class="chart-card">
+    <h2>Signups over time</h2>
+    <div class="sub">Daily new signups for the last 30 days</div>
+    <svg id="chart" viewBox="0 0 600 240" preserveAspectRatio="none" aria-label="Signups over time chart"></svg>
+  </div>
+
+  <div class="controls">
+    <input type="search" id="qEmail" class="grow" placeholder="Search emailâ¦" oninput="render()">
+    <input type="date" id="qFrom" oninput="render()">
+    <input type="date" id="qTo" oninput="render()">
+    <select id="qSource" onchange="render()">
+      <option value="">All sources</option>
+      <option value="hero">Hero</option>
+      <option value="repeat">Repeat</option>
+    </select>
+    <button class="secondary" onclick="resetFilters()">Reset</button>
+    <button onclick="exportCsv()">Export CSV</button>
+  </div>
+
+  <div id="tableWrap"></div>
+</main>
+
+<footer>Velora Escapes Â· Internal Â· refreshes every 60s</footer>
+</div>
+
+<script>
+const ADMIN_PASS_HASH = "3a6cf43939dd0eab45e56a276bde8d0aa19a883d99bf07bc110ef190818030b6"; // SHA-256 of admin passcode
+
+let signups = [];
+
+async function sha256(text){
+  const buf = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function tryUnlock(){
+  const input = document.getElementById('lockInput').value;
+  const errEl = document.getElementById('lockErr');
+  errEl.textContent='';
+  const h = await sha256(input);
+  if(h === ADMIN_PASS_HASH){
+    sessionStorage.setItem('velora_admin','1');
+    showApp();
+  } else {
+    errEl.textContent = 'Incorrect passcode.';
+  }
+}
+
+document.getElementById('lockInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter')tryUnlock();
+});
+
+function showApp(){
+  document.getElementById('lockScreen').style.display='none';
+  document.getElementById('app').style.display='block';
+  loadAndRender();
+  setInterval(loadAndRender, 60000);
+}
+
+if(sessionStorage.getItem('velora_admin')==='1'){
+  showApp();
+}
+
+async function loadAndRender(){
+  try{
+    const res = await fetch('signups.json?t='+Date.now(),{cache:'no-store'});
+    if(!res.ok)throw new Error('failed');
+    const data = await res.json();
+    signups = (data.signups||[]).sort((a,b)=>new Date(b.submitted_at)-new Date(a.submitted_at));
+    document.getElementById('lastUpdated').textContent = 'Last updated: ' + new Date(data.updated_at||Date.now()).toLocaleString();
+    render();
+  }catch(e){
+    signups = [];
+    document.getElementById('lastUpdated').textContent = 'No signups yet.';
+    render();
+  }
+}
+
+function filtered(){
+  const q = document.getElementById('qEmail').value.toLowerCase().trim();
+  const from = document.getElementById('qFrom').value;
+  const to = document.getElementById('qTo').value;
+  const src = document.getElementById('qSource').value;
+  return signups.filter(s=>{
+    if(q && !s.email.toLowerCase().includes(q))return false;
+    if(src && s.source !== src)return false;
+    const t = new Date(s.submitted_at);
+    if(from && t < new Date(from+'T00:00:00'))return false;
+    if(to && t > new Date(to+'T23:59:59'))return false;
+    return true;
+  });
+}
+
+function render(){
+  const f = filtered();
+  // metrics
+  const total = signups.length;
+  const now = Date.now();
+  const last7 = signups.filter(s=>now-new Date(s.submitted_at).getTime() < 7*86400000).length;
+  const last24 = signups.filter(s=>now-new Date(s.submitted_at).getTime() < 86400000).length;
+  const hero = signups.filter(s=>s.source==='hero').length;
+  const repeat = signups.filter(s=>s.source==='repeat').length;
+  document.getElementById('mTotal').textContent = total.toLocaleString();
+  document.getElementById('m7').textContent = last7.toLocaleString();
+  document.getElementById('m24').textContent = last24.toLocaleString();
+  document.getElementById('mHero').textContent = hero.toLocaleString();
+  document.getElementById('mRepeat').textContent = repeat.toLocaleString();
+
+  // table
+  const wrap = document.getElementById('tableWrap');
+  if(f.length === 0){
+    wrap.innerHTML = '<div class="empty">No signups match your filters.</div>';
+  } else {
+    let html = '<table><thead><tr><th>Email</th><th>Submitted</th><th>Source</th><th>Device</th></tr></thead><tbody>';
+    f.forEach(s=>{
+      const dt = new Date(s.submitted_at);
+      const ua = (s.user_agent||'').slice(0,50);
+      html += '<tr><td>'+escape(s.email)+'</td><td>'+dt.toLocaleString()+'</td><td><span class="badge '+escape(s.source||'')+'">'+escape(s.source||'')+'</span></td><td style="font-size:11px;opacity:0.6">'+escape(ua)+'</td></tr>';
+    });
+    html += '</tbody></table>';
+    wrap.innerHTML = html;
+  }
+
+  // chart - daily counts last 30 days
+  drawChart();
+}
+
+function escape(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+function drawChart(){
+  const days = 30;
+  const buckets = {};
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  for(let i=days-1;i>=0;i--){
+    const d = new Date(today);
+    d.setDate(d.getDate()-i);
+    const key = d.toISOString().slice(0,10);
+    buckets[key] = 0;
+  }
+  signups.forEach(s=>{
+    const key = new Date(s.submitted_at).toISOString().slice(0,10);
+    if(key in buckets)buckets[key]++;
+  });
+  const data = Object.entries(buckets);
+  const max = Math.max(1, ...data.map(d=>d[1]));
+  const W = 600, H = 240, P = 30;
+  const svg = document.getElementById('chart');
+  const bw = (W - P*2) / data.length;
+  let bars = '';
+  let labels = '';
+  data.forEach((d,i)=>{
+    const h = (d[1]/max) * (H - P*2);
+    const x = P + i*bw + bw*0.15;
+    const y = H - P - h;
+    const w = bw*0.7;
+    bars += '<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="#b08968" rx="1"></rect>';
+    if(i===0||i===data.length-1||i===Math.floor(data.length/2)){
+      const lab = d[0].slice(5);
+      labels += '<text x="'+(x+w/2).toFixed(1)+'" y="'+(H-8)+'" font-size="10" fill="#888" text-anchor="middle">'+lab+'</text>';
+    }
+  });
+  // y-axis max label
+  labels += '<text x="'+(P-6)+'" y="'+(P+4)+'" font-size="10" fill="#888" text-anchor="end">'+max+'</text>';
+  labels += '<text x="'+(P-6)+'" y="'+(H-P+4)+'" font-size="10" fill="#888" text-anchor="end">0</text>';
+  // baseline
+  bars += '<line x1="'+P+'" y1="'+(H-P)+'" x2="'+(W-P)+'" y2="'+(H-P)+'" stroke="#e0d4c0" stroke-width="1"/>';
+  svg.innerHTML = bars + labels;
+}
+
+function resetFilters(){
+  document.getElementById('qEmail').value='';
+  document.getElementById('qFrom').value='';
+  document.getElementById('qTo').value='';
+  document.getElementById('qSource').value='';
+  render();
+}
+
+function exportCsv(){
+  const f = filtered();
+  const rows = [['email','submitted_at','source','user_agent']];
+  f.forEach(s=>rows.push([s.email,s.submitted_at,s.source||'',s.user_agent||'']));
+  const csv = rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob = new Blob([csv],{type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'velora_signups_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
